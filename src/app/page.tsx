@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import "h8k-components";
 
 type DataProps = {
   Title: string;
@@ -67,15 +66,16 @@ const HomePage = () => {
         </section>
         <section>
           <ul data-testid="movieList" className="flex flex-col gap-3">
-            {data ? (
-              data.data.map((item, index) => (
-                <li className="bg-white w-[300px] p-1 shadow" key={index}>
-                  {item.Title}
-                </li>
-              ))
-            ) : (
-              <div data-testid="no-result">No Result Found</div>
-            )}
+            {data &&
+              (data.data.length > 0 ? (
+                data.data.map((item, index) => (
+                  <li className="bg-white w-[300px] p-1 shadow" key={index}>
+                    {item.Title}
+                  </li>
+                ))
+              ) : (
+                <>No Result Found</>
+              ))}
           </ul>
         </section>
       </main>
